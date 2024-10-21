@@ -7,9 +7,6 @@ application = Flask(__name__)
 def hello() :
     return render_template("index.html")
 
-# if __name__ == "__main__":
-#    application.run(host='0.0.0.0',debug=True)
-
 @application.route("/list")
 def view_list():
     return render_template("list.html")
@@ -37,18 +34,14 @@ def reg_item_submit():
     status=request.args.get("status")
     phone=request.args.get("phone")
     print(name,seller,addr,email,category,card,status,phone)
-    #return render_template("reg_item.html")
-    
-@application.route("/submit_item_post", methods=['POST'])
-def reg_item_submit_post():
-    data=request.form
-    return render_template("submit_item_result.html", data=data)
-
+    return render_template("reg_items.html")
 
 @application.route("/submit_item_post", methods=['POST'])
 def reg_item_submit_post():
     image_file=request.files["file"]
-    image_file.save("static/images/{}".format(image_file.filename))
+    image_file.save("/static/images/{}".format(image_file.filename))
+    
     data=request.form
     return render_template("submit_item_result.html", data=data,
 img_path="static/images/{}".format(image_file.filename))
+    
