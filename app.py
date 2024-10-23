@@ -36,12 +36,36 @@ def reg_item_submit():
     print(name,seller,addr,email,category,card,status,phone)
     return render_template("reg_items.html")
 
+#@application.route("/submit_item_post", methods=['POST'])
+#def reg_item_submit_post():
+#    image_file=request.files["file"]
+#    image_file.save("static/images/{}".format(image_file.filename))
+    
+#    data=request.form
+#    return render_template("submit_item_result.html", data=data,
+#img_path="static/images/{}".format(image_file.filename))
+
 @application.route("/submit_item_post", methods=['POST'])
 def reg_item_submit_post():
-    image_file=request.files["file"]
+    # Extract data from the form
+    name = request.form.get("name")
+    seller = request.form.get("seller")
+    addr = request.form.get("addr")
+    email = request.form.get("email")
+    category = request.form.get("category")
+    card = request.form.get("card")
+    status = request.form.get("status")
+    phone = request.form.get("phone")
+    
+    # Print the form data to the terminal
+    print(name, seller, addr, email, category, card, status, phone)
+    
+    # Save the uploaded file
+    image_file = request.files["file"]
     image_file.save("static/images/{}".format(image_file.filename))
     
-    data=request.form
-    return render_template("submit_item_result.html", data=data,
-img_path="static/images/{}".format(image_file.filename))
+    # Pass data to the template
+    return render_template("submit_item_result.html", data=request.form,
+                           img_path="static/images/{}".format(image_file.filename))
+
     
