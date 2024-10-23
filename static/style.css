@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar__logo a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar__menu {
+    list-style: none;
+    display: flex;
+}
+
+.navbar__menu li {
+    margin: 0 15px;
+}
+
+.navbar__menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.navbar__menu li a:hover {
+    background-color: #555; /* 호버 시 배경색 변경 */
+    color: #ffdd57; /* 호버 시 글자색 변경 */
+    border-radius: 5px; /* 모서리 둥글게 */
+}
+
+.navbar__toogleBtn {
+    display: none;
+    color: white;
+    font-size: 24px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* 네비게이션 바 아래에 표시 */
+        left: 0;
+        background-color: #333; /* 배경색 */
+    }
+
+    .navbar__menu.active {
+        display: flex;
+    }
+
+    .navbar__toogleBtn {
+        display: block;
+    }
+}
+
+section {
+    padding: 20px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
